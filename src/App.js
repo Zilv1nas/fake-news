@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Posts } from './components';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +10,7 @@ class App extends Component {
           <h1 className="App-title">💩 ~ Fake News ~ 💩</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          <Posts />
         </p>
       </div>
     );

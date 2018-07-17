@@ -13,9 +13,15 @@
 - Automatically wires Service Worker, which you avoid unless you know what you are doing
 - `yarn.lock` dependency list (has global dependency cache, saves lots of time, parallelizes pretty well)
 
-## Warning Messages react-scripts
+## Tooling
+
+### Eslint warnings
 
 > [0]   Line 9:  Emojis should be wrapped in <span>, have role="img", and have an accessible description with aria-label or aria-labelledby  jsx-a11y/accessible-emoji
+
+### React Dev Tools
+
+- Chrome / Firefox extension
 
 ## JSON file as an API
 

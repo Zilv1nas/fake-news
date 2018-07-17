@@ -17,7 +17,7 @@ class Posts extends Component {
   }
 
   render() {
-    return this.state.posts.map(post => <Post post={post} />);
+    return this.state.posts.map(post => <Post key={post.id} post={post} />);
   }
 }
 

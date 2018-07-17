@@ -1,0 +1,12 @@
+.Post {
+  border: 1px solid black;
+}
+
+.Post-title {
+  font-weight: 700;
+}
+
+.Post-body {
+  background-color: red;
+  color: white;
+}

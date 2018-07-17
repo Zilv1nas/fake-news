@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { api } from '../services';
+import Post from './Post';
 
 class Posts extends Component {
   state = {
@@ -16,7 +17,7 @@ class Posts extends Component {
   }
 
   render() {
-    return <span>{JSON.stringify(this.state.posts)}</span>;
+    return this.state.posts.map(post => <Post post={post} />);
   }
 }
 

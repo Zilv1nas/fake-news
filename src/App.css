@@ -13,10 +13,6 @@
   animation: App-title-spin infinite 3s linear;
 }
 
-.App-intro {
-  font-size: large;
-}
-
 @keyframes App-title-spin {
   from { transform: scale(0); }
   to { transform: scale(1); }

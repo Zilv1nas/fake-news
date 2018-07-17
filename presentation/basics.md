@@ -26,3 +26,9 @@
 ## JSON file as an API
 
 - [json-server](https://github.com/typicode/json-server)
+
+## React Internals
+
+- Virtual DOM
+- Keys
+- Class  / Function based components

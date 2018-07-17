@@ -4,7 +4,7 @@
 
 - [Create React apps with no build configuration](https://github.com/facebook/create-react-app)
 - `npx` is npm package runner
-- `npx create-react-app my-blog`
+- `npx create-react-app fake-news`
 
 ### File Structure
 

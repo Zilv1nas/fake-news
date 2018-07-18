@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { api } from '../services';
+import { api } from '../../services';
 import Post from './Post';
 
 class Posts extends Component {

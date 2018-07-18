@@ -32,3 +32,4 @@
 - Virtual DOM
 - Keys
 - Class  / Function based components
+- .bind(this) vs class member assignment

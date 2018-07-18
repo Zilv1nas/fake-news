@@ -3,11 +3,28 @@ import { api } from '../../services';
 import './AddPost.css';
 
 class AddPost extends Component {
-  handleAdd = async () => {
-    await api.Posts.add({
-      title: 'Some fake title',
-      body: 'Hello world'
+  state = {
+    title: '',
+    body: ''
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
     });
+  }
+
+  resetInput = () => {
+    this.setState({
+      title: '',
+      body: ''
+    });
+  }
+
+  handleAdd = async () => {
+    const { title, body } = this.state;
+    await api.Posts.add({ title, body });
+    this.resetInput();
   }
 
   render() {
@@ -15,11 +32,15 @@ class AddPost extends Component {
       <form className="AddPost">
         <input
           type="text"
+          value={this.state.title}
+          onChange={this.handleChange}
           name="title"
           placeholder="📖 Fake the title"
           className="AddPost-input" />
         <textarea
           rows="3"
+          value={this.state.body}
+          onChange={this.handleChange}
           name="body"
           placeholder="What's on your mind?"
           className="AddPost-input" />

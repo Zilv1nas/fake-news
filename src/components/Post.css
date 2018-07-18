@@ -1,12 +1,19 @@
 .Post {
-  border: 1px solid black;
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+  padding: .8rem;
+  margin: .8rem;
 }
 
 .Post-title {
   font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .Post-body {
-  background-color: red;
-  color: white;
+  color: #1D2129;
+  font-weight: 500;
+  text-align: left;
 }

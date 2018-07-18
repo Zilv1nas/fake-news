@@ -14,6 +14,6 @@
 }
 
 @keyframes App-title-spin {
-  from { transform: scale(0); }
+  from { transform: scale(0.5); }
   to { transform: scale(1); }
 }

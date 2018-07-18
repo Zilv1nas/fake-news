@@ -22,5 +22,5 @@ export const requests = {
 
 export const Posts = {
   all: () => requests.get('/posts'),
-  create: ({ title, body, }) => requests.post('/posts', { title, body }),
+  add: ({ title, body, }) => requests.post('/posts', { title, body }),
 }

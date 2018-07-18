@@ -2,16 +2,25 @@ export const requests = {
   get: (url) => {
     const config = {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      headers: { 'Content-Type': 'application/json' }
     };
     return fetch(url, config)
       .then(response => response.json())
-      .catch(error => console.error(`GET[${url}] failed =\n`, error))
-  }
+      .catch(error => console.error(`GET[${url}] failed =\n`, error));
+  },
+  post: (url, body = {}) => {
+    const config = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    };
+    return fetch(url, config)
+      .then(response => response.json())
+      .catch(error => console.error(`POST[${url} failed =\n`, error));
+  },
 }
 
 export const Posts = {
-  getAll: () => requests.get('/posts')
+  all: () => requests.get('/posts'),
+  create: ({ title, body, }) => requests.post('/posts', { title, body }),
 }

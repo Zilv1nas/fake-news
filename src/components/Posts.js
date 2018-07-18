@@ -12,7 +12,7 @@ class Posts extends Component {
   }
 
   loadPosts = async () => {
-    const posts = await api.Posts.getAll();
+    const posts = await api.Posts.all();
     this.setState({ posts });
   }
 

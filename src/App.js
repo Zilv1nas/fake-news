@@ -3,6 +3,12 @@ import { Posts, AddPost } from './components/posts';
 import { api } from './services';
 import './App.css';
 
+const Header = () => (
+  <header className="App-header">
+    <h1 className="App-title">💩 ~ Fake News ~ 💩</h1>
+  </header>
+);
+
 class App extends Component {
   state = {
     posts: []
@@ -20,9 +26,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">💩 ~ Fake News ~ 💩</h1>
-        </header>
+        <Header />
         <AddPost />
         <Posts posts={this.state.posts} />
       </div>

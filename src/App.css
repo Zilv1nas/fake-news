@@ -9,11 +9,11 @@
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 1em;
   animation: App-title-spin infinite 3s linear;
 }
 
 @keyframes App-title-spin {
   from { transform: scale(0.5); }
-  to { transform: scale(1); }
+  to { transform: scale(1.5); }
 }

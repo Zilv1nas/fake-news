@@ -21,6 +21,6 @@ export const requests = {
 }
 
 export const Posts = {
-  all: () => requests.get('/posts'),
+  all: () => requests.get('/posts?_sort=id&_order=desc'),
   add: ({ title, body, }) => requests.post('/posts', { title, body }),
 }

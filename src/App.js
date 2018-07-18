@@ -23,11 +23,18 @@ class App extends Component {
     this.setState({ posts });
   }
 
+  handleAdd = async({ title, body }) => {
+    const post = await api.Posts.add({ title, body });
+    this.setState({
+      posts: [post, ...this.state.posts]
+    });
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
-        <AddPost />
+        <AddPost handleAdd={this.handleAdd} />
         <Posts posts={this.state.posts} />
       </div>
     );

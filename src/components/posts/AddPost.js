@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { api } from '../../services';
 import './AddPost.css';
 
 class AddPost extends Component {
@@ -23,7 +22,7 @@ class AddPost extends Component {
 
   handleAdd = async () => {
     const { title, body } = this.state;
-    await api.Posts.add({ title, body });
+    await this.props.handleAdd({ title, body })
     this.resetInput();
   }
 

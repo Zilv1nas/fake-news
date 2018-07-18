@@ -1,0 +1,47 @@
+.AddPost {
+  border: 1px solid lightgray;
+  border-radius: 3px;
+  background-color: white;
+  padding: .8rem;
+  margin: .8rem;
+}
+
+.AddPost-input {
+  display: block;
+  border: none;
+  border: 0.5px solid lightgray;
+  border-radius: 2px;
+  padding: 0;
+  width: 100%;
+  margin-bottom: .5rem;
+}
+
+.AddPost input {
+  line-height: 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.AddPost textarea {
+  resize: none;
+  height: auto;
+  font-size: .8rem;
+}
+
+.AddPost button {
+  background-color: #4469B0;
+  border: none;
+  border-radius: 1.5px;
+  color: #FEFEFE;
+  cursor: pointer;
+  display: block;
+  font-weight: 700;
+  font-size: .8rem;
+  padding: .5rem;
+  margin-top: .5rem;
+  width: 100%;
+}
+
+.AddPost button:hover {
+  background-color: #385A97;
+}

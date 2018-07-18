@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Posts } from './components/posts';
+import { Posts, AddPost } from './components/posts';
 import './App.css';
 
 class App extends Component {
@@ -9,6 +9,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">💩 ~ Fake News ~ 💩</h1>
         </header>
+        <AddPost />
         <Posts />
       </div>
     );

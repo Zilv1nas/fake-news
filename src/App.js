@@ -11,16 +11,23 @@ const Header = () => (
 
 class App extends Component {
   state = {
-    posts: []
+    posts: [],
+    shoudCancel: false
   }
 
   componentDidMount() {
     this.loadPosts();
   }
 
+  componentWillUnmount() {
+    this.shoudCancel = true;
+  }
+
   loadPosts = async () => {
     const posts = await api.Posts.all();
-    this.setState({ posts });
+    if (!this.shoudCancel) {
+      this.setState({ posts });
+    }
   }
 
   handleAdd = async({ title, body }) => {
@@ -29,6 +36,7 @@ class App extends Component {
       posts: [post, ...this.state.posts]
     });
   };
+
 
   render() {
     return (

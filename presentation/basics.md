@@ -1,5 +1,29 @@
 # React Basics - Presentation
 
+## Who uses?
+
+- Facebook
+- Twitter
+- Netflix
+- Inventi
+- **Who doesn't?**
+
+## Why?
+
+- Simple APIs
+- Different mental model, transformed how you think and build
+- Robust community
+
+Available on various platforms:
+- Desktop
+- Mobile (iOS, Android)
+- Server (Node.js)
+- React VR
+
+## Pros / Cons
+- Primarly concerned with View
+- Additional libs for HTTP Calls, Routing and etc (i.e. Angular comes w/ batteries included)
+
 ## Project Initialization
 
 - [Create React apps with no build configuration](https://github.com/facebook/create-react-app)
@@ -29,7 +53,7 @@
 
 ## React Internals
 
-- Virtual DOM
+- [Virtual DOM](http://teropa.info/images/onchange_vdom_change.svg)
 - Keys
 - Class  / Function based components
 - .bind(this) vs class member assignment

@@ -5,7 +5,11 @@ import './App.css';
 
 const Header = () => (
   <header className="App-header">
-    <h1 className="App-title">💩 ~ Fake News ~ 💩</h1>
+    <h1 className="App-title">
+      <span role="img" aria-label="poopie" style={{ marginRight: '0.2em' }}>💩</span>
+      ~ Fake News ~
+      <span role="img" aria-label="poopie" style={{ marginLeft: '0.4em' }}>💩</span>
+    </h1>
   </header>
 );
 

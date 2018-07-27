@@ -8,6 +8,11 @@
   color: white;
 }
 
+.App-link {
+  color: white;
+  text-decoration: none;
+}
+
 .App-title {
   font-size: 1em;
   animation: App-title-spin infinite 3s ease-in-out;

@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { Posts, AddPost } from '.';
+import { Loader } from '..';
 import { api } from '../../services';
 
 class PostList extends Component {
   state = {
-    posts: [],
+    posts: null,
     shoudCancel: false
   }
 
@@ -30,11 +31,17 @@ class PostList extends Component {
     });
   };
 
+  renderPosts = () => {
+    const { posts } = this.state;
+    if (!posts) return <Loader />;
+    return <Posts posts={posts} />;
+  }
+
   render() {
     return (
       <Fragment>
         <AddPost handleAdd={this.handleAdd} />
-        <Posts posts={this.state.posts} />
+        {this.renderPosts()}
       </Fragment>
     );
   }

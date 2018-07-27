@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Loader } from '..';
 import { api } from '../../services';
 import './PostDetails.css';
 
@@ -26,7 +27,7 @@ class PostDetails extends Component {
 
   render() {
     const { post } = this.state;
-    if (!post) return null;
+    if (!post) return <Loader />;
     return (
       <article className="PostDetails">
         <h1 className="PostDetails-title">{post.title}</h1>

@@ -1,38 +1,24 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { posts } from '../../actions';
 import { Posts, AddPost } from '.';
 import { Loader } from '..';
-import { api } from '../../services';
 
 class PostList extends Component {
-  state = {
-    posts: null,
-    shoudCancel: false
-  }
-
   componentDidMount() {
     this.loadPosts();
   }
 
-  componentWillUnmount() {
-    this.shoudCancel = true;
+  loadPosts = () => {
+    this.props.loadPosts();
   }
 
-  loadPosts = async () => {
-    const posts = await api.Posts.all();
-    if (!this.shoudCancel) {
-      this.setState({ posts });
-    }
-  }
-
-  handleAdd = async ({ title, body }) => {
-    const post = await api.Posts.add({ title, body });
-    this.setState({
-      posts: [post, ...this.state.posts]
-    });
+  handleAdd = (post) => {
+    this.props.addPost(post);
   };
 
   renderPosts = () => {
-    const { posts } = this.state;
+    const { posts } = this.props;
     if (!posts) return <Loader />;
     return <Posts posts={posts} />;
   }
@@ -47,4 +33,11 @@ class PostList extends Component {
   }
 }
 
-export default PostList;
+const mapStateToProps = state => ({
+  posts: state.posts.postList,
+});
+
+export default connect(mapStateToProps, {
+  loadPosts: posts.loadPosts,
+  addPost: posts.addPost,
+})(PostList);

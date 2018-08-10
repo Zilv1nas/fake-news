@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { posts } from '../../actions';
-import { Posts, AddPost } from '.';
-import { Loader } from '..';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { posts } from "../../actions";
+import { Posts, AddPost } from ".";
+import { Loader } from "..";
 
 class PostList extends Component {
   componentDidMount() {
@@ -11,9 +11,9 @@ class PostList extends Component {
 
   loadPosts = () => {
     this.props.loadPosts();
-  }
+  };
 
-  handleAdd = (post) => {
+  handleAdd = post => {
     this.props.addPost(post);
   };
 
@@ -21,12 +21,12 @@ class PostList extends Component {
     const { posts } = this.props;
     if (!posts) return <Loader />;
     return <Posts posts={posts} />;
-  }
+  };
 
   render() {
     return (
       <Fragment>
-        <AddPost handleAdd={this.handleAdd} />
+        {!this.props.isLimitReached && <AddPost handleAdd={this.handleAdd} />}
         {this.renderPosts()}
       </Fragment>
     );
@@ -35,9 +35,13 @@ class PostList extends Component {
 
 const mapStateToProps = state => ({
   posts: state.posts.postList,
+  isLimitReached: state.posts.isLimitReached
 });
 
-export default connect(mapStateToProps, {
-  loadPosts: posts.loadPosts,
-  addPost: posts.addPost,
-})(PostList);
+export default connect(
+  mapStateToProps,
+  {
+    loadPosts: posts.loadPosts,
+    addPost: posts.addPost
+  }
+)(PostList);

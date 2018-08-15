@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from "react";
-import { connect } from "react-redux";
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { posts } from "../../actions";
-import { Posts, AddPost } from ".";
-import { Loader } from "..";
+import AddPost from './AddPost';
+import Post from './Post';
+import Loader from '../Loader';
 
 class PostList extends Component {
   componentDidMount() {
@@ -19,8 +20,12 @@ class PostList extends Component {
 
   renderPosts = () => {
     const { posts } = this.props;
-    if (!posts) return <Loader />;
-    return <Posts posts={posts} />;
+
+    if (posts) {
+      return posts.map(post => <Post key={post.id} post={post} />)
+    }
+
+    return <Loader />;
   };
 
   render() {

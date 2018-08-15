@@ -7,7 +7,6 @@ import Loader from '../Loader';
 class PostList extends Component {
   componentDidMount() {
     this.loadAll();
-    console.log('mount thre po')
   }
 
   loadAll = () => {

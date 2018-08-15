@@ -19,9 +19,11 @@ class Post extends Component {
 
   loadPost = async () => {
     const { match: { params } } = this.props;
-    const post = await api.Posts.findOne(params.id);
-    if (!this.shoudCancel) {
+    try {
+      const post = await api.Posts.findOne(params.id);
       this.setState({ post });
+    } catch(e) {
+      console.error(e);
     }
   }
 

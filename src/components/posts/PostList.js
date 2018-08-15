@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { posts } from "../../actions";
 import AddPost from './AddPost';
-import Post from './Post';
+import PostListItem from './PostListItem';
 import Loader from '../Loader';
 
 class PostList extends Component {
@@ -22,7 +22,7 @@ class PostList extends Component {
     const { posts } = this.props;
 
     if (posts) {
-      return posts.map(post => <Post key={post.id} post={post} />)
+      return posts.map(post => <PostListItem key={post.id} post={post} />)
     }
 
     return <Loader />;

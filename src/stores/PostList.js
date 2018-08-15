@@ -1,7 +1,7 @@
 import { decorate, observable, action } from 'mobx';
 import { api } from '../services';
 
-class Posts {
+class PostList  {
   posts = [];
   loadAll = async () => {
     const posts = api.Posts.all(); 
@@ -18,7 +18,7 @@ class Posts {
 }
 
 
-export default decorate(Posts, {
+export default decorate(PostList, {
   loadAll: action,
   add: action,
   posts: observable,

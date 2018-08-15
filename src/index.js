@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import { Provider } from 'mobx-react';
 import { PostList } from './stores';
+import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 const stores = {
-  posts: new PostList(),
+  postList: new PostList(),
 };
 
 ReactDOM.render(

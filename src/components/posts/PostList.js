@@ -1,21 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { posts } from "../../actions";
+import { inject, Observer } from 'mobx-react';
 import AddPost from './AddPost';
 import PostListItem from './PostListItem';
 import Loader from '../Loader';
 
 class PostList extends Component {
   componentDidMount() {
-    this.loadPosts();
+    this.loadAll();
+    console.log('mount thre po')
   }
 
-  loadPosts = () => {
-    this.props.loadPosts();
+  loadAll = () => {
+    this.props.loadAll();
   };
 
   handleAdd = post => {
-    this.props.addPost(post);
+    this.props.add(post);
   };
 
   renderPosts = () => {
@@ -31,22 +31,14 @@ class PostList extends Component {
   render() {
     return (
       <Fragment>
-        {!this.props.isLimitReached && <AddPost handleAdd={this.handleAdd} />}
-        {this.renderPosts()}
+        <AddPost handleAdd={this.handleAdd} />
+        <Observer>{() => this.renderPosts()}</Observer>
       </Fragment>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  posts: state.posts.postList,
-  isLimitReached: state.posts.isLimitReached
-});
-
-export default connect(
-  mapStateToProps,
-  {
-    loadPosts: posts.loadPosts,
-    addPost: posts.addPost
-  }
-)(PostList);
+export default inject(stores => {
+  const { posts, add, loadAll } = stores.postList;
+  return { posts, add, loadAll };
+})(PostList);

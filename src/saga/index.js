@@ -1,6 +1,6 @@
-import { call, put, all, takeEvery, take, fork } from "redux-saga/effects";
-import { posts } from "../actions";
-import { api } from "../services";
+import { call, put, all, takeEvery, take, fork } from 'redux-saga/effects';
+import { posts } from '../actions';
+import { api } from '../services';
 
 export function* handleLoadPosts() {
   try {

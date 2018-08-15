@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Loader } from '..';
 import { api } from '../../services';
-import './PostDetails.css';
+import './Post.css';
 
-class PostDetails extends Component {
+class Post extends Component {
   state = {
     post: null,
     shoudCancel: false
@@ -29,12 +29,12 @@ class PostDetails extends Component {
     const { post } = this.state;
     if (!post) return <Loader />;
     return (
-      <article className="PostDetails">
-        <h1 className="PostDetails-title">{post.title}</h1>
-        <p className="PostDetails-body">{post.body}</p>
+      <article className="Post">
+        <h1 className="Post-title">{post.title}</h1>
+        <p className="Post-body">{post.body}</p>
       </article>
     );
   }
 }
 
-export default PostDetails;
+export default Post;

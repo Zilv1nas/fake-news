@@ -32,4 +32,8 @@ Example of boilerplate `devDependencies` from `package.json`
 
 After adding them run `yarn install` in order to install new dependencies and get the `yarn.lock` updated
 
+## Replace `registerServiceWorker.js` with `registerServiceWorker.ts`
+
+- `cp /tmp/boilerplate/src/registerServiceWorker.ts .`
+- `rm ./src/registerServiceWorker.js`
 

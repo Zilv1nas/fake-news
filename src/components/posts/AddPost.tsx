@@ -28,7 +28,7 @@ class AddPost extends Component {
 
   render() {
     return (
-      <form className="AddPost" onSubmit={e => e.preventDefault()}>
+      <form className="AddPost" onSubmit={(e: Event) => e.preventDefault()}>
         <input
           type="text"
           value={this.state.title}

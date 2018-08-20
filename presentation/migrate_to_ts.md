@@ -48,3 +48,8 @@ After adding them run `yarn install` in order to install new dependencies and ge
 -  Go and Have Fun adding types to replace *implicit any* warnings
     - or go *fully mad* and enable `noImplicitAny` in your `tsconfig.json`
 - Configure TypeScript compiler at `tsconfig.json` to allow [Babel way of imports](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288) such as `import React from 'react';` 
+
+## The Ugly Parts
+
+- Installing types separately, such as: `yarn add @types/react-router` and etc, lots of the times @types definitions are out of date
+- Some packages come with type definitions some don't

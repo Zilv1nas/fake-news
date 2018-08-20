@@ -37,3 +37,13 @@ After adding them run `yarn install` in order to install new dependencies and ge
 - `cp /tmp/boilerplate/src/registerServiceWorker.ts .`
 - `rm ./src/registerServiceWorker.js`
 
+
+## Migrate current js/jsx files to tsx
+
+**Rename all files from `.js` to `.tsx`**
+
+`find . -type f \( -iname '*.js' -or -iname '*.jsx' \) -not -wholename '*node_modules*' -exec sh -c 'mv "$1" "${1%.js*}.tsx"' _ {} \;`
+
+**The missing parts**
+-  Go and Have Fun adding types to replace *implicit any* warnings
+    - or go *fully mad* and enable `noImplicitAny` in your `tsconfig.json`

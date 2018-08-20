@@ -47,3 +47,4 @@ After adding them run `yarn install` in order to install new dependencies and ge
 **The missing parts**
 -  Go and Have Fun adding types to replace *implicit any* warnings
     - or go *fully mad* and enable `noImplicitAny` in your `tsconfig.json`
+- Configure TypeScript compiler at `tsconfig.json` to allow [Babel way of imports](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288) such as `import React from 'react';` 

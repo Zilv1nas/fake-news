@@ -1,30 +1,27 @@
-import React, { Component, FormEvent } from 'react';
-import './AddPost.css';
+import React, { Component, FormEvent } from "react";
+import "./AddPost.css";
 
 class AddPost extends Component {
-  private state = {
-    title: '',
-    body: ''
-  }
+  state = {
+    body: "",
+    title: ""
+  };
 
-  private handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
-  }
+  };
 
-  private resetInput = () => {
-    this.setState({
-      title: '',
-      body: ''
-    });
-  }
+  resetInput = () => {
+    this.setState({ title: "", body: "" });
+  };
 
-  private handleAdd = async () => {
+  handleAdd = async () => {
     const { title, body } = this.state;
-    await this.props.handleAdd({ title, body })
+    await this.props.handleAdd({ title, body });
     this.resetInput();
-  }
+  };
 
   render() {
     return (
@@ -35,18 +32,22 @@ class AddPost extends Component {
           onChange={this.handleChange}
           name="title"
           placeholder="📖 Fake the title"
-          className="AddPost-input" />
+          className="AddPost-input"
+        />
         <textarea
           rows="3"
           value={this.state.body}
           onChange={this.handleChange}
           name="body"
           placeholder="What's on your mind?"
-          className="AddPost-input" />
+          className="AddPost-input"
+        />
 
-        <button type="button" onClick={this.handleAdd}>Post</button>
+        <button type="button" onClick={this.handleAdd}>
+          Post
+        </button>
       </form>
-    )
+    );
   }
 }
 

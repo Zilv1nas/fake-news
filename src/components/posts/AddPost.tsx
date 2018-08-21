@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component, FormEvent } from 'react';
 import './AddPost.css';
 
 class AddPost extends Component {
-  state = {
+  private state = {
     title: '',
     body: ''
   }
 
-  handleChange = (event) => {
+  private handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     });
   }
 
-  resetInput = () => {
+  private resetInput = () => {
     this.setState({
       title: '',
       body: ''
     });
   }
 
-  handleAdd = async () => {
+  private handleAdd = async () => {
     const { title, body } = this.state;
     await this.props.handleAdd({ title, body })
     this.resetInput();
@@ -28,7 +28,7 @@ class AddPost extends Component {
 
   render() {
     return (
-      <form className="AddPost" onSubmit={(e: Event) => e.preventDefault()}>
+      <form className="AddPost" onSubmit={(e: FormEvent) => e.preventDefault()}>
         <input
           type="text"
           value={this.state.title}

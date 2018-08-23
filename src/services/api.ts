@@ -1,3 +1,5 @@
+import { PostEntity } from "src/model";
+
 export const requests = {
   get: (url: string) => {
     const config = {
@@ -11,7 +13,7 @@ export const requests = {
         console.error(`GET[${url}] failed =\n`, error);
       });
   },
-  post: (url: string, body = {}) => {
+  post: (url: string, body: any) => {
     const config = {
       body: JSON.stringify(body),
       headers: { "Content-Type": "application/json" },
@@ -27,9 +29,15 @@ export const requests = {
 };
 
 export const Posts = {
-  add: ({ title, body }: { title: string; body: string }) => {
+  add: ({
+    title,
+    body
+  }: {
+    title: string;
+    body: string;
+  }): Promise<PostEntity> => {
     return requests.post("/posts", { title, body });
   },
   all: () => requests.get("/posts?_sort=id&_order=desc"),
-  findOne: id => requests.get(`/posts/${id}`)
+  findOne: (id: string) => requests.get(`/posts/${id}`)
 };

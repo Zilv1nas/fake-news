@@ -2,12 +2,18 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './PostListItem.css';
 
-const PostListItem = ({ post: { id, title, body } }) => (
+interface IPost {
+  id: string;
+  title: string;
+  body: string;
+}
+
+const PostListItem = ( post: IPost) => (
   <article className="PostListItem">
-    <Link to={`/posts/${id}`}>
-      <h1 className="PostListItem-title">{title}</h1>
+    <Link to={`/posts/${post.id}`}>
+      <h1 className="PostListItem-title">{post.title}</h1>
     </Link>
-    <p className="PostListItem-body">{body}</p>
+    <p className="PostListItem-body">{post.body}</p>
   </article>
 );
 

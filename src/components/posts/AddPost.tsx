@@ -17,9 +17,7 @@ export default class AddPost extends Component<Props, {}> {
   handleChange = (event: ChangeEvent) => {
     const target = event.target as HTMLTextAreaElement;
       this.setState({
-        form: {
-          [target.name]: target.value
-        }
+        form: { ...this.state.form, [target.name]: target.value }
       });
   };
 

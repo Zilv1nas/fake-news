@@ -1,10 +1,10 @@
-import { decorate, observable, action } from 'mobx';
+import { action, decorate, observable } from 'mobx';
 import { api } from '../services';
 
 class PostList  {
   posts = [];
   loadAll = async () => {
-    const posts = await api.Posts.all(); 
+    const posts = await api.Posts.all();
     this.posts = posts;
   }
   add = async (post) => {

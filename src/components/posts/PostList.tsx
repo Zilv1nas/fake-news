@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from 'react';
 import { inject, Observer } from 'mobx-react';
+import React, { Component, Fragment } from 'react';
+import Loader from '../Loader';
 import AddPost from './AddPost';
 import PostListItem from './PostListItem';
-import Loader from '../Loader';
 
 class PostList extends Component {
   componentDidMount() {

@@ -6,7 +6,7 @@ interface Props {
   handleAdd: ({ title, body }: { title: string, body: string }) => Promise<PostEntity>;
 }
 
-class AddPost extends Component<Props, {}> {
+export default class AddPost extends Component<Props, {}> {
   state = {
     form: {
       body: "",
@@ -63,5 +63,3 @@ class AddPost extends Component<Props, {}> {
     );
   }
 }
-
-export default AddPost;

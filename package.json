@@ -34,5 +34,10 @@
     "prettier-tslint": "^0.4.0",
     "typescript": "^3.0.1"
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "jest": {
+    "moduleNameMapper": {
+      "src/(.*)": "<rootDir>/src/$1"
+    }
+  }
 }

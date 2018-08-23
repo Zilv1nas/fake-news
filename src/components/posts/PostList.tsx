@@ -19,7 +19,7 @@ const mapStoresToProps = (stores: any) => {
 
 @inject(mapStoresToProps)
 @observer
-class PostList extends Component<PostListProps, {}> {
+export default class PostList extends Component<PostListProps, {}> {
   componentDidMount() {
     this.loadAll();
   }
@@ -51,5 +51,3 @@ class PostList extends Component<PostListProps, {}> {
     );
   }
 }
-
-export default PostList

@@ -12,7 +12,7 @@ interface State {
   post: PostEntity;
 }
 
-class Post extends Component<PostProps, State> {
+export default class Post extends Component<PostProps, State> {
   componentDidMount() {
     this.loadPost();
   }
@@ -43,5 +43,3 @@ class Post extends Component<PostProps, State> {
     );
   }
 }
-
-export default Post;

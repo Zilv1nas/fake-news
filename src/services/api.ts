@@ -38,6 +38,6 @@ export const Posts = {
   }): Promise<PostEntity> => {
     return requests.post("/posts", { title, body });
   },
-  all: (): Promise<[PostEntity]> => requests.get("/posts?_sort=id&_order=desc"),
+  all: (): Promise<PostEntity[]> => requests.get("/posts?_sort=id&_order=desc"),
   findOne: (id: string): Promise<PostEntity> => requests.get(`/posts/${id}`)
 };

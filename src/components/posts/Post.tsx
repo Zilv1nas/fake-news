@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
-import { Loader } from '..';
-import { api } from '../../services';
+import { Loader } from 'src/components';
+import { PostEntity } from 'src/model';
+import { api } from 'src/services';
 import './Post.css';
 
-class Post extends Component {
-  state = {
-    post: null,
-    shoudCancel: false
-  }
+interface PostProps {
+  match: any;
+}
 
+interface State {
+  post: PostEntity;
+}
+
+class Post extends Component<PostProps, State> {
   componentDidMount() {
     this.loadPost();
-  }
-
-  componentWillUnmount() {
-    this.shoudCancel = true;
   }
 
   loadPost = async () => {
@@ -23,6 +23,7 @@ class Post extends Component {
       const post = await api.Posts.findOne(params.id);
       this.setState({ post });
     } catch(e) {
+      // tslint:disable-next-line
       console.error(e);
     }
   }

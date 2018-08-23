@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { PostEntity } from 'src/model';
 import './PostListItem.css';
 
 interface PostListItemProps {
-  post: {
-    id: string;
-    title: string;
-    body: string;
-  }
+  post: PostEntity;
 }
 
 const PostListItem = ({ post } : PostListItemProps) => (

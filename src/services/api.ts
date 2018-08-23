@@ -1,4 +1,4 @@
-import { PostEntity } from "src/model";
+import { PostEntity, PostListEntity } from "src/model";
 
 export const requests = {
   get: (url: string) => {
@@ -38,6 +38,7 @@ export const Posts = {
   }): Promise<PostEntity> => {
     return requests.post("/posts", { title, body });
   },
-  all: () => requests.get("/posts?_sort=id&_order=desc"),
-  findOne: (id: string) => requests.get(`/posts/${id}`)
+  all: (): Promise<PostListEntity> =>
+    requests.get("/posts?_sort=id&_order=desc"),
+  findOne: (id: string): Promise<PostEntity> => requests.get(`/posts/${id}`)
 };

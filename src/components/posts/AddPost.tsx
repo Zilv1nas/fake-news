@@ -23,9 +23,13 @@ class AddPost extends Component {
     this.resetInput();
   };
 
+  onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  }
+
   render() {
     return (
-      <form className="AddPost" onSubmit={(e: FormEvent) => e.preventDefault()}>
+      <form className="AddPost" onSubmit={this.onSubmit}>
         <input
           type="text"
           value={this.state.title}

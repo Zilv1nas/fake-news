@@ -1,25 +1,34 @@
-import React, { Component, FormEvent } from "react";
+import React, { ChangeEvent, Component, FormEvent, } from "react";
+import { PostEntity } from "src/model";
 import "./AddPost.css";
 
-class AddPost extends Component {
-  state = {
-    body: "",
-    title: ""
-  };
+interface Props {
+  handleAdd: ({ title, body }: { title: string, body: string }) => Promise<PostEntity>;
+}
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+class AddPost extends Component<Props, {}> {
+  state = {
+    form: {
+      body: "",
+      title: "",
+    }
+  }
+
+  handleChange = (event: ChangeEvent) => {
+    const target = event.target as HTMLTextAreaElement;
+      this.setState({
+        form: {
+          [target.name]: target.value
+        }
+      });
   };
 
   resetInput = () => {
-    this.setState({ title: "", body: "" });
+    this.setState({ form: { title: "", body: "" } });
   };
 
   handleAdd = async () => {
-    const { title, body } = this.state;
-    await this.props.handleAdd({ title, body });
+    await this.props.handleAdd(this.state.form);
     this.resetInput();
   };
 
@@ -32,15 +41,15 @@ class AddPost extends Component {
       <form className="AddPost" onSubmit={this.onSubmit}>
         <input
           type="text"
-          value={this.state.title}
+          value={this.state.form.title}
           onChange={this.handleChange}
           name="title"
           placeholder="📖 Fake the title"
           className="AddPost-input"
         />
         <textarea
-          rows="3"
-          value={this.state.body}
+          rows={3}
+          value={this.state.form.body}
           onChange={this.handleChange}
           name="body"
           placeholder="What's on your mind?"

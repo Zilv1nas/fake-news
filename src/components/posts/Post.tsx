@@ -29,7 +29,11 @@ class Post extends Component {
 
   render() {
     const { post } = this.state;
-    if (!post) return <Loader />;
+
+    if (!post) {
+      return <Loader />;
+    }
+
     return (
       <article className="Post">
         <h1 className="Post-title">{post.title}</h1>

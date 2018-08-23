@@ -1,5 +1,5 @@
 export const requests = {
-  get: (url) => {
+  get: (url: string) => {
     const config = {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
@@ -8,7 +8,7 @@ export const requests = {
       .then(response => response.json())
       .catch(error => console.error(`GET[${url}] failed =\n`, error));
   },
-  post: (url, body = {}) => {
+  post: (url: string, body = {}) => {
     const config = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

@@ -1,10 +1,17 @@
 import { inject, Observer } from 'mobx-react';
 import React, { Component, Fragment } from 'react';
-import Loader from '../Loader';
+import { Loader } from 'src/components';
+import { AddPostEntity, PostEntity } from 'src/model';
 import AddPost from './AddPost';
 import PostListItem from './PostListItem';
 
-class PostList extends Component {
+interface PostListProps {
+  posts: [PostEntity]
+  loadAll: () => void;
+  add: ({}: AddPostEntity) => Promise<PostEntity>;
+}
+
+class PostList extends Component<PostListProps, {}> {
   componentDidMount() {
     this.loadAll();
   }
@@ -13,8 +20,8 @@ class PostList extends Component {
     this.props.loadAll();
   };
 
-  handleAdd = post => {
-    this.props.add(post);
+  handleAdd = (post: AddPostEntity) : Promise<PostEntity> => {
+    return this.props.add(post);
   };
 
   renderPosts = () => {

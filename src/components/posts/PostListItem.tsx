@@ -2,13 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './PostListItem.css';
 
-interface IPost {
-  id: string;
-  title: string;
-  body: string;
+interface PostListItemProps {
+  post: {
+    id: string;
+    title: string;
+    body: string;
+  }
 }
 
-const PostListItem = ( post: IPost) => (
+const PostListItem = ({ post } : PostListItemProps) => (
   <article className="PostListItem">
     <Link to={`/posts/${post.id}`}>
       <h1 className="PostListItem-title">{post.title}</h1>

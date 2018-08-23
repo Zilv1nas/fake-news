@@ -27,7 +27,9 @@ export const requests = {
 };
 
 export const Posts = {
-  add: ({ title, body }) => requests.post("/posts", { title, body }),
+  add: ({ title, body }: { title: string; body: string }) => {
+    return requests.post("/posts", { title, body });
+  },
   all: () => requests.get("/posts?_sort=id&_order=desc"),
   findOne: id => requests.get(`/posts/${id}`)
 };

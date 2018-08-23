@@ -45,11 +45,13 @@ After adding them run `yarn install` in order to install new dependencies and ge
 `find . -type f \( -iname '*.js' -or -iname '*.jsx' \) -not -wholename '*node_modules*' -exec sh -c 'mv "$1" "${1%.js*}.tsx"' _ {} \;`
 
 **The missing parts**
+
 -  Go and Have Fun adding types to replace *implicit any* warnings
     - or go *fully mad* and enable `noImplicitAny` in your `tsconfig.json`
-- Configure TypeScript compiler at `tsconfig.json` to allow [Babel way of imports](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288) such as `import React from 'react';` 
+- Configure TypeScript compiler at `tsconfig.json` to allow [Babel way of imports](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/5128#issuecomment-131638288) such as `import React from 'react';`
 
 ## The Ugly Parts
 
 - Installing types separately, such as: `yarn add @types/react-router` and etc, lots of the times @types definitions are out of date
 - Some packages come with type definitions some don't
+- Messing around with the right configuration for the tslint

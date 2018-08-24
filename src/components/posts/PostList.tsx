@@ -1,10 +1,25 @@
+import { inject, observer } from 'mobx-react';
 import React, { Component, Fragment } from 'react';
-import { inject, Observer } from 'mobx-react';
+import { Loader } from 'src/components';
+import { AddPostEntity, PostEntity } from 'src/model';
+import { PostListType } from 'src/stores/PostList';
 import AddPost from './AddPost';
 import PostListItem from './PostListItem';
-import Loader from '../Loader';
 
-class PostList extends Component {
+interface PostListProps {
+  posts: PostEntity[]
+  loadAll: () => void;
+  add: ({}: AddPostEntity) => Promise<PostEntity>;
+}
+
+const mapStoresToProps = (stores: any) => {
+  const { posts, add, loadAll } = stores.postList as PostListType
+  return { posts, add, loadAll };
+};
+
+@inject(mapStoresToProps)
+@observer
+export default class PostList extends Component<PostListProps, {}> {
   componentDidMount() {
     this.loadAll();
   }
@@ -13,8 +28,8 @@ class PostList extends Component {
     this.props.loadAll();
   };
 
-  handleAdd = post => {
-    this.props.add(post);
+  handleAdd = (post: AddPostEntity) : Promise<PostEntity> => {
+    return this.props.add(post);
   };
 
   renderPosts = () => {
@@ -31,13 +46,8 @@ class PostList extends Component {
     return (
       <Fragment>
         <AddPost handleAdd={this.handleAdd} />
-        <Observer>{() => this.renderPosts()}</Observer>
+        {this.renderPosts()}
       </Fragment>
     );
   }
 }
-
-export default inject(stores => {
-  const { posts, add, loadAll } = stores.postList;
-  return { posts, add, loadAll };
-})(PostList);

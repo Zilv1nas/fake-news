@@ -1,12 +1,16 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
-import { PostList, Post } from './components/posts';
+import { Route, Switch } from 'react-router';
+import { Post, PostList } from './components/posts';
+
+const PageNotFound = () => (
+  <div>The page was not found.</div>
+);
 
 const routes = (
   <Switch>
-    <Route path="/" exact component={PostList} />
-    <Route path="/posts/:id" exact component={Post} />
-    <Route render={() => <div>The page was not found.</div>} />
+    <Route path="/" exact={true} component={PostList} />
+    <Route path="/posts/:id" exact={true} component={Post} />
+    <Route component={PageNotFound} />
   </Switch>
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import "./App.css";
 import routes from './routes';
-import './App.css';
 
 const Header = () => (
   <header className="App-header">

@@ -8,29 +8,32 @@ interface PostProps {
   match: any;
 }
 
-interface State {
-  post: PostEntity;
-}
+class Post extends Component<PostProps, { post?: PostEntity }> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      post: undefined
+    }
+  }
 
-export default class Post extends Component<PostProps, State> {
   componentDidMount() {
     this.loadPost();
   }
 
   loadPost = async () => {
-    const { match: { params } } = this.props;
+    const {
+      match: { params }
+    } = this.props;
     try {
       const post = await api.Posts.findOne(params.id);
       this.setState({ post });
-    } catch(e) {
-      // tslint:disable-next-line
-      console.error(e);
+    } catch (e) {
+      console.error(e); // tslint:disable-line
     }
-  }
+  };
 
   render() {
     const { post } = this.state;
-
     if (!post) {
       return <Loader />;
     }
@@ -43,3 +46,5 @@ export default class Post extends Component<PostProps, State> {
     );
   }
 }
+
+export default Post;

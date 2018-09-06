@@ -7,6 +7,7 @@ This is demo application that is used as a basis for the following workshops:
 - Redux Saga
 - MobX
 - TypeScript + MobX
+- Google Flutter ( https://github.com/sytakeris/fake-news-flutter )
 
 ---
 

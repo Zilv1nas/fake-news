@@ -1,49 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Posts, AddPost } from '.';
 import { Loader } from '..';
 import { api } from '../../services';
 
-class PostList extends Component {
-  state = {
-    posts: null,
-  }
+export default () => {
+  const [posts, setPosts] = useState(null);
 
-  componentDidMount() {
-    this.loadPosts();
-  }
+  useEffect(() => {
+    let shouldCancel = false;
+    const loadPosts = async () => {
+      const posts = await api.Posts.all();
+      if (!shouldCancel) {
+        setPosts(posts);
+      }
+    };
+    loadPosts();
 
-  componentWillUnmount() {
-    this.shouldCancel = true;
-  }
-
-  loadPosts = async () => {
-    const posts = await api.Posts.all();
-    if (!this.shouldCancel) {
-      this.setState({ posts });
+    return () => {
+      shouldCancel = true;
     }
-  }
-
-  handleAdd = async ({ title, body }) => {
+  }, []);
+  
+  const handleAdd = async ({ title, body }) => {
     const post = await api.Posts.add({ title, body });
-    this.setState({
-      posts: [post, ...this.state.posts]
-    });
+    setPosts([post, ...posts]);
   };
 
-  renderPosts = () => {
-    const { posts } = this.state;
-    if (!posts) return <Loader />;
-    return <Posts posts={posts} />;
-  }
-
-  render() {
-    return (
-      <>
-        <AddPost handleAdd={this.handleAdd} />
-        {this.renderPosts()}
-      </>
-    );
-  }
-}
-
-export default PostList;
+  return (
+    <>
+      <AddPost handleAdd={handleAdd} />
+      {posts && <Posts posts={posts} />}
+      {!posts && <Loader />}
+    </>
+  );
+};

@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Posts, AddPost } from '.';
 import { Loader } from '..';
 import { api } from '../../services';
@@ -6,7 +6,6 @@ import { api } from '../../services';
 class PostList extends Component {
   state = {
     posts: null,
-    shoudCancel: false
   }
 
   componentDidMount() {
@@ -14,12 +13,12 @@ class PostList extends Component {
   }
 
   componentWillUnmount() {
-    this.shoudCancel = true;
+    this.shouldCancel = true;
   }
 
   loadPosts = async () => {
     const posts = await api.Posts.all();
-    if (!this.shoudCancel) {
+    if (!this.shouldCancel) {
       this.setState({ posts });
     }
   }
@@ -39,10 +38,10 @@ class PostList extends Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <AddPost handleAdd={this.handleAdd} />
         {this.renderPosts()}
-      </Fragment>
+      </>
     );
   }
 }

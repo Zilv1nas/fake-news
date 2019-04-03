@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Posts, AddPost } from '.';
 import { Loader } from '..';
 import { api } from '../../services';
+import { useStore } from '../../reduxLite';
 
 export default () => {
-  const [posts, setPosts] = useState(null);
+  const [{ posts }, dispatch] = useStore();
 
   useEffect(() => {
     let shouldCancel = false;
     const loadPosts = async () => {
       const posts = await api.Posts.all();
       if (!shouldCancel) {
-        setPosts(posts);
+        dispatch({ type: 'SET_POSTS', payload: posts });
       }
     };
     loadPosts();
@@ -23,7 +24,7 @@ export default () => {
   
   const handleAdd = async ({ title, body }) => {
     const post = await api.Posts.add({ title, body });
-    setPosts([post, ...posts]);
+    dispatch({ type: 'ADD_POST', payload: post });
   };
 
   return (

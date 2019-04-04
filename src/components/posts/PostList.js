@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Posts, AddPost } from '.';
 import { Loader } from '..';
 import { api } from '../../services';

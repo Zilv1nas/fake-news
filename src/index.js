@@ -1,29 +1,15 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import { StoreProvider } from './reduxLite';
-
-const initialState = {
-  posts: null,
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'SET_POSTS':
-      return { ...state, posts: action.payload };
-    case 'ADD_POST':
-      return { ...state, posts: [action.payload, ...state.posts] };
-    default:
-      return state;
-  }
-}
+import postsReducer from './reducers/posts';
 
 ReactDOM.render(
   <BrowserRouter>
-    <StoreProvider initialState={initialState} reducer={reducer}>
+    <StoreProvider reducer={postsReducer}>
       <App />
     </StoreProvider>
   </BrowserRouter>,
